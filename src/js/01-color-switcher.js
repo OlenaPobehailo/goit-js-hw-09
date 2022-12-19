@@ -23,7 +23,9 @@ refs.buttonStart.addEventListener('click', onStartClick);
 refs.buttonStop.addEventListener('click', onStopClick);
 
 function onStartClick() {
-  refs.buttonStart.setAttribute('disabled', 'disabled');
+  refs.buttonStart.setAttribute('disabled', 'disabled');  
+  refs.buttonStop.removeAttribute('disabled', 'disabled');
+
 
   timerId = setInterval(() => {
     document.body.style.backgroundColor = getRandomHexColor();
@@ -32,7 +34,9 @@ function onStartClick() {
 
 function onStopClick() {
   clearInterval(timerId);
+  refs.buttonStop.setAttribute('disabled', 'disabled');  
   refs.buttonStart.removeAttribute('disabled', 'disabled');
+  
 }
 
 function getRandomHexColor() {
