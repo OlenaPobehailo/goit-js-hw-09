@@ -75,7 +75,7 @@ function onStartButtonClick() {
 
     const { days, hours, minutes, seconds } = convertMs(deltaTime);
 
-    refs.spanDays.textContent = Math.abs(days);
+    refs.spanDays.textContent = pad(Math.abs(days));
     refs.spanHours.textContent = pad(Math.abs(hours));
     refs.spanMinutes.textContent = pad(Math.abs(minutes));
     refs.spanSeconds.textContent = pad(Math.abs(seconds));
