@@ -6,25 +6,11 @@ HTML містить розмітку форми, в поля якої корис
 Доповни код функції createPromise таким чином, щоб вона повертала один проміс, який виконується або відхиляється через delay часу. Значенням промісу повинен бути об'єкт, в якому будуть властивості position і delay зі значеннями однойменних параметрів. Використовуй початковий код функції для вибору того, що потрібно зробити з промісом - виконати або відхилити.
 */
 
-// const refs = {
-//   delay: document.querySelector('input[name="delay"]'),
-//   step: document.querySelector('input[name="step"]'),
-//   amount: document.querySelector('input[name="amount"]'),
-//   submitBtn: document.querySelector('button[type="submit"]'),
-// };
-
-// refs.delay.addEventListener('input', onDelayInput);
-// refs.step.addEventListener('input', onStepInput);
-// refs.amount.addEventListener('input', onAmountInput);
-// refs.submitBtn.addEventListener('click', onSubmitBtnClick);
-
 import Notiflix from 'notiflix';
 
-
 const formRef = document.querySelector('.form');
+const startButton = document.querySelector('button[type="submit"]');
 formRef.addEventListener('submit', onFormSubmit);
-
-console.log(formRef);
 
 function onFormSubmit(e) {
   e.preventDefault();
@@ -32,25 +18,22 @@ function onFormSubmit(e) {
   let delay = Number(e.target.delay.value);
   let step = Number(e.target.step.value);
   let amount = Number(e.target.amount.value);
-  Notiflix.Notify.init({position: 'left-top',distance: '150px',});
-
-  console.log('delay', delay);
-  console.log('step', step);
-  console.log('amount', amount);
-
+  Notiflix.Notify.init({ position: 'left-top', distance: '150px' });
 
   for (let position = 1; position <= amount; position += 1) {
     createPromise(position, delay)
       .then(({ position, delay }) => {
         setTimeout(() => {
-          //console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
-          Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+          Notiflix.Notify.success(
+            `✅ Fulfilled promise ${position} in ${delay}ms`
+          );
         }, delay);
       })
       .catch(({ position, delay }) => {
         setTimeout(() => {
-          //console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-          Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+          Notiflix.Notify.failure(
+            `❌ Rejected promise ${position} in ${delay}ms`
+          );
         }, delay);
       });
 
