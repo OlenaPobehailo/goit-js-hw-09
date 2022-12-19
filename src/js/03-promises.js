@@ -9,7 +9,6 @@ HTML містить розмітку форми, в поля якої корис
 import Notiflix from 'notiflix';
 
 const formRef = document.querySelector('.form');
-const startButton = document.querySelector('button[type="submit"]');
 formRef.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(e) {
@@ -52,7 +51,6 @@ function createPromise(position, delay) {
     if (shouldResolve) {
       // Fulfill
       resolve(objectPromise);
-      console.log(object);
     } else {
       // Reject
       reject(objectPromise);
