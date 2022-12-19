@@ -82,6 +82,10 @@ function onStartButtonClick() {
 
     if (deltaTime < 0) {
       clearInterval(timerID);
+      refs.spanDays.textContent = '00';
+      refs.spanHours.textContent = '00';
+      refs.spanMinutes.textContent = '00';
+      refs.spanSeconds.textContent = '00';
     }
   }, 1000);
 }
